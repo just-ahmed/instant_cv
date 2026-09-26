@@ -1,0 +1,6 @@
+{
+  "name": "سيرة فورية",
+  "description": "منشئ سير ذاتية احترافي باللغة العربية مع معاينة مباشرة وتصدير PDF",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
