@@ -47,21 +47,21 @@ export const Header: React.FC<Props> = ({
   return (
     <header className="no-print bg-slate-900/95 border-b border-slate-800 sticky top-0 z-50 backdrop-blur-md">
       {/* Top Main Navigation Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3.5 flex items-center justify-between gap-2 sm:gap-4">
         {/* Brand Logo & Name */}
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex items-center gap-2 sm:gap-3 shrink min-w-0">
           <div 
-            className="w-10 h-10 rounded-xl flex items-center justify-center text-slate-900 font-black shadow-lg"
+            className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center text-slate-900 font-black shadow-lg shrink-0"
             style={{
               background: `linear-gradient(135deg, #73FBD3 0%, #44E5E7 30%, #59D2FE 70%, #4A8FE7 100%)`
             }}
           >
-            <Sparkles className="w-5 h-5 text-slate-900" />
+            <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-slate-900" />
           </div>
-          <div>
-            <h1 className="text-xl font-black text-slate-100 tracking-tight flex items-center gap-2">
+          <div className="min-w-0">
+            <h1 className="text-base sm:text-xl font-black text-slate-100 tracking-tight flex items-center gap-1.5 truncate">
               سيرة فورية
-              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#44E5E7]/20 text-[#44E5E7] border border-[#44E5E7]/30">
+              <span className="text-[9px] sm:text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-[#44E5E7]/20 text-[#44E5E7] border border-[#44E5E7]/30 shrink-0">
                 مجاني 100%
               </span>
             </h1>
@@ -72,17 +72,17 @@ export const Header: React.FC<Props> = ({
         </div>
 
         {/* Action Buttons: PDF Export, Print, Import/Export */}
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           <button
             onClick={onExportPDF}
             disabled={isExporting}
             type="button"
-            className="px-4 py-2 rounded-xl text-xs font-bold text-slate-900 flex items-center gap-2 transition-all shadow-md active:scale-95 disabled:opacity-50 cursor-pointer"
+            className="px-3 sm:px-4 py-2 rounded-xl text-xs font-bold text-slate-900 flex items-center gap-1.5 sm:gap-2 transition-all shadow-md active:scale-95 disabled:opacity-50 cursor-pointer"
             style={{
               background: `linear-gradient(135deg, #73FBD3 0%, #44E5E7 50%, #59D2FE 100%)`
             }}
           >
-            <Download className="w-4 h-4" />
+            <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             <span>{isExporting ? 'جاري التصدير...' : 'تحميل PDF'}</span>
           </button>
 
@@ -92,7 +92,7 @@ export const Header: React.FC<Props> = ({
             className="p-2 sm:px-3 sm:py-2 rounded-xl text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors flex items-center gap-1.5"
             title="طباعة مباشرة"
           >
-            <Printer className="w-4 h-4" />
+            <Printer className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             <span className="hidden md:inline">طباعة</span>
           </button>
 
@@ -118,7 +118,7 @@ export const Header: React.FC<Props> = ({
       </div>
 
       {/* Toolbar Controls Sub-Header: Templates, Colors, Fonts */}
-      <div className="bg-slate-950/80 border-t border-slate-800/80 px-4 sm:px-6 lg:px-8 py-2.5">
+      <div className="bg-slate-950/80 border-t border-slate-800/80 px-3 sm:px-6 lg:px-8 py-2 sm:py-2.5">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
           {/* Template Selector */}
           <div className="flex items-center gap-2 overflow-x-auto py-1">

@@ -169,10 +169,27 @@
     border-radius: 0 !important;
   }
 
+  .a4-preview-viewport,
+  .a4-preview-scaler {
+    width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    transform: none !important;
+    position: static !important;
+  }
+
   @page {
     size: A4 portrait;
     margin: 0;
   }
+}
+
+/* Global mobile layout containment to prevent unwanted horizontal scroll & padding */
+html, body {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* A4 Page Container Ratio & Arabic Typography */
@@ -196,10 +213,7 @@
   letter-spacing: normal !important;
 }
 
-/* Scale preview wrapper on smaller screens */
-@media (max-width: 1024px) {
-  .a4-preview-wrapper {
-    transform-origin: top center;
-  }
+.a4-preview-viewport {
+  max-width: 100%;
 }
 

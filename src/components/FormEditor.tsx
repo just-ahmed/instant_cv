@@ -301,7 +301,7 @@ export const FormEditor: React.FC<Props> = ({ data, onChange, onLoadSample, onCl
                   type="text"
                   value={data.personal.fullName}
                   onChange={(e) => updatePersonal('fullName', e.target.value)}
-                  placeholder="أدخل الاسم الكامل (مثال: أحمد محمود)"
+                  placeholder="أدخل الاسم الكامل (مثال: طارق عبد السلام الفرجاني)"
                   className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-[#44E5E7]"
                 />
               </div>
@@ -312,7 +312,7 @@ export const FormEditor: React.FC<Props> = ({ data, onChange, onLoadSample, onCl
                   type="text"
                   value={data.personal.jobTitle}
                   onChange={(e) => updatePersonal('jobTitle', e.target.value)}
-                  placeholder="أدخل المسمى الوظيفي (مثال: مهندس برمجيات)"
+                  placeholder="أدخل المسمى الوظيفي (مثال: مهندس برمجيات ومطور نظم)"
                   className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-[#44E5E7]"
                 />
               </div>
@@ -323,7 +323,7 @@ export const FormEditor: React.FC<Props> = ({ data, onChange, onLoadSample, onCl
                   type="email"
                   value={data.personal.email}
                   onChange={(e) => updatePersonal('email', e.target.value)}
-                  placeholder="أدخل بريدك الإلكتروني (اختياري)"
+                  placeholder="أدخل بريدك الإلكتروني (مثال: tarek@example.ly)"
                   className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-[#44E5E7] dir-ltr text-right"
                 />
               </div>
@@ -334,7 +334,7 @@ export const FormEditor: React.FC<Props> = ({ data, onChange, onLoadSample, onCl
                   type="text"
                   value={data.personal.phone}
                   onChange={(e) => updatePersonal('phone', e.target.value)}
-                  placeholder="أدخل رقم الهاتف (مثال: +966 50 123 4567)"
+                  placeholder="أدخل رقم الهاتف (مثال: +218 91 234 5678)"
                   className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-[#44E5E7] dir-ltr text-right"
                 />
               </div>
@@ -345,7 +345,7 @@ export const FormEditor: React.FC<Props> = ({ data, onChange, onLoadSample, onCl
                   type="text"
                   value={data.personal.location}
                   onChange={(e) => updatePersonal('location', e.target.value)}
-                  placeholder="المدينة، الدولة (مثال: الرياض، السعودية)"
+                  placeholder="المدينة، الدولة (مثال: طرابلس، ليبيا)"
                   className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-[#44E5E7]"
                 />
               </div>
@@ -424,7 +424,7 @@ export const FormEditor: React.FC<Props> = ({ data, onChange, onLoadSample, onCl
                       type="text"
                       value={exp.company}
                       onChange={(e) => updateExperience(exp.id, 'company', e.target.value)}
-                      placeholder="مثال: شركة الحلول المتقدمة"
+                      placeholder="مثال: شركة ليبيانا للهاتف المحمول"
                       className="w-full bg-slate-950 border border-slate-700 rounded px-2.5 py-1.5 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-[#59D2FE]"
                     />
                   </div>
@@ -557,7 +557,7 @@ export const FormEditor: React.FC<Props> = ({ data, onChange, onLoadSample, onCl
                       type="text"
                       value={edu.institution}
                       onChange={(e) => updateEducation(edu.id, 'institution', e.target.value)}
-                      placeholder="مثال: جامعة الملك سعود"
+                      placeholder="مثال: جامعة طرابلس"
                       className="w-full bg-slate-950 border border-slate-700 rounded px-2.5 py-1.5 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-[#73FBD3]"
                     />
                   </div>

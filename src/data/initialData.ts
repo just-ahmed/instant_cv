@@ -2,79 +2,54 @@ import { CVData, PresetPalette, ThemeConfig } from '../types';
 
 export const INITIAL_CV_DATA: CVData = {
   personal: {
-    fullName: 'أحمد محمود السعيد',
-    jobTitle: 'مهندس برمجيات مطور واجهات (Full-Stack Developer)',
-    email: 'ahmed.elsaeed@example.com',
-    phone: '+966 50 123 4567',
-    location: 'الرياض، المملكة العربية السعودية',
-    website: 'https://ahmed-dev.io',
-    linkedin: 'linkedin.com/in/ahmed-elsaeed',
-    github: 'github.com/ahmed-elsaeed',
+    fullName: 'طارق عبد السلام الفرجاني',
+    jobTitle: 'مهندس برمجيات ومطور نظم (Full-Stack Developer)',
+    email: 'tarek.alferjani@example.ly',
+    phone: '+218 91 234 5678',
+    location: 'طرابلس، ليبيا',
+    website: 'https://tarek-tech.ly',
+    linkedin: 'linkedin.com/in/tarek-alferjani',
+    github: 'github.com/tarek-alferjani',
     avatarUrl: '',
-    summary: 'مهندس برمجيات شغوف ومبتكر يمتلك أكثر من 5 سنوات من الخبرة في تطوير تطبيقات الويب الحديثة وحلول السحابة. متخصص في بناء واجهات مستخدم تفاعلية وسريعة باستخدام React وTypeScript وNext.js مع الالتزام بأفضل معايير تجربة المستخدم وأداء الأنظمة.'
+    summary: 'مهندس برمجيات ليبي متخصص في تطوير منصات الويب السحابية والأنظمة الرقمية بخبرة تزيد عن 5 سنوات. أمتلك سجلاً متميزاً في بناء حلول تقنية مرنة وعالية الأداء للمؤسسات والشركات، بالاعتماد على أحدث التقنيات الحديثة مثل React وTypeScript وNode.js وقواعد البيانات السحابية.'
   },
   experience: [
     {
       id: 'exp-1',
-      jobTitle: 'كبير مطوري الواجهات الأمامية (Senior Frontend Developer)',
-      company: 'شركة حلول التقنية المتقدمة',
-      startDate: 'يناير 2022',
+      jobTitle: 'كبير مهندسي تطوير البرمجيات',
+      company: 'شركة ليبيانا للهاتف المحمول - طرابلس',
+      startDate: 'يناير 2021',
       endDate: 'حتى الآن',
       currentlyWorking: true,
       responsibilities: [
-        'قيادة فريق مكون من 6 مطورين لتطوير منصة التجارة الإلكترونية الرئيسية وتحديث معمارية النظام.',
-        'تحسين زمن تحميل الصفحة بنسبة 40% من خلال تحسين أداء React وتطبيق استراتيجيات التخزين المؤقت.',
-        'إعادة بناء نظام التصميم (Design System) الخاص بالشركة لتوحيد الواجهات عبر جميع المنتجات الرقمية.'
-      ]
-    },
-    {
-      id: 'exp-2',
-      jobTitle: 'مطور واجهات وسحابيات (Frontend Developer)',
-      company: 'مؤسسة الابتكار الرقمي',
-      startDate: 'يونيو 2019',
-      endDate: 'ديسمبر 2021',
-      currentlyWorking: false,
-      responsibilities: [
-        'تطوير أكثر من 12 لوحة تحكم تفاعلية مخصصة لعملاء القطاع الحكومي والخاص.',
-        'ربط الواجهات الأمامية بـ RESTful APIs و GraphQL بكفاءة وأمان عاليين.',
-        'كتابة اختبارات البرمجة الآلية (Automated Tests) وضمان جودة الكود المكتوب.'
+        'قيادة فريق تطوير النظم الرقمية وتحديث البوابة الإلكترونية لخدمات المشتركين وتطبيقات الويب.',
+        'تطوير واجهات برمجة التطبيقات (APIs) وربطها الآمن مع منصات الدفع المصرفي الإلكتروني في ليبيا.',
+        'تحسين أداء واستجابة الأنظمة وتقليل زمن التحميل بنسبة 35% لخدمة ملايين المشتركين بكفاءة عالية.'
       ]
     }
   ],
   education: [
     {
       id: 'edu-1',
-      degree: 'بكالوريوس علوم الحاسب والمعلومات',
-      institution: 'جامعة الملك سعود - الرياض',
+      degree: 'بكالوريوس هندسة الحاسوب وتقنية المعلومات',
+      institution: 'جامعة طرابلس - كلية تقنية المعلومات',
       startYear: '2015',
-      endYear: '2019',
-      description: 'مرتبة الشرف الأولى - التخصص الدقيق: هندسة البرمجيات والتكنيات السحابية.'
+      endYear: '2020',
+      description: 'الترتيب الأول على الدفعة بتقدير ممتاز مع مرتبة الشرف، مشروع التخرج في الحوسبة السحابية.'
     }
   ],
   skills: [
-    { id: 'sk-1', name: 'React / Next.js', level: 5 },
-    { id: 'sk-2', name: 'TypeScript / JavaScript', level: 5 },
-    { id: 'sk-3', name: 'Tailwind CSS / HTML5 / CSS3', level: 5 },
-    { id: 'sk-4', name: 'Node.js / Express', level: 4 },
-    { id: 'sk-5', name: 'Git & GitHub / CI/CD', level: 4 },
-    { id: 'sk-6', name: 'UI/UX Design Concepts', level: 4 }
+    { id: 'sk-1', name: 'تطوير تطبيقات الويب (React / TypeScript / Node.js)', level: 5 }
   ],
   languages: [
-    { id: 'lang-1', name: 'اللغة العربية', proficiency: 'اللغة الأم' },
-    { id: 'lang-2', name: 'اللغة الإنجليزية', proficiency: 'ممتاز (C1/C2 - طلاقة احترافية)' }
+    { id: 'lang-1', name: 'اللغة العربية (اللغة الأم)', proficiency: 'اللغة الأم' }
   ],
   certifications: [
     {
       id: 'cert-1',
-      title: 'AWS Certified Solutions Architect',
-      issuer: 'Amazon Web Services',
+      title: 'شهادة مهندس حلول سحابية معتمد (AWS Certified Solutions Architect)',
+      issuer: 'أمازون لخدمات الويب (AWS)',
       year: '2023'
-    },
-    {
-      id: 'cert-2',
-      title: 'Meta Frontend Developer Professional Certificate',
-      issuer: 'Meta / Coursera',
-      year: '2022'
     }
   ]
 };

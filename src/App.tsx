@@ -9,12 +9,34 @@ import { exportCVToPDF } from './utils/pdfExport';
 import { ZoomIn, ZoomOut, RefreshCw, Eye, CheckCircle2, AlertCircle } from 'lucide-react';
 
 export default function App() {
+  // Helper to calculate best fit scale based on viewport width
+  const calculateDefaultScale = () => {
+    if (typeof window !== 'undefined') {
+      const width = window.innerWidth;
+      if (width < 640) {
+        // Mobile screen: available width inside container
+        const availableWidth = Math.max(280, width - 36);
+        return Math.min(0.85, Math.max(0.35, Number((availableWidth / 794).toFixed(2))));
+      } else if (width < 1024) {
+        return 0.65;
+      }
+    }
+    return 0.85;
+  };
+
   // Load initial data from localStorage if present
   const [cvData, setCvData] = useState<CVData>(() => {
     try {
       const saved = localStorage.getItem('sira_fawriya_data');
       if (saved) {
         const parsed = JSON.parse(saved);
+        // Automatically migrate away from previous Saudi sample data to new Libyan data
+        if (
+          parsed.personal?.fullName === 'أحمد محمود السعيد' ||
+          parsed.personal?.phone?.includes('+966')
+        ) {
+          return INITIAL_CV_DATA;
+        }
         // Automatically purge any old unsplash placeholder faces
         if (parsed.personal?.avatarUrl && parsed.personal.avatarUrl.includes('unsplash.com')) {
           parsed.personal.avatarUrl = '';
@@ -44,9 +66,29 @@ export default function App() {
   const [theme, setTheme] = useState<ThemeConfig>(DEFAULT_THEME);
   const [mobileTab, setMobileTab] = useState<'edit' | 'preview'>('edit');
   const [isExporting, setIsExporting] = useState<boolean>(false);
-  const [previewScale, setPreviewScale] = useState<number>(0.85);
+  const [previewScale, setPreviewScale] = useState<number>(calculateDefaultScale);
+  const [isAutoFit, setIsAutoFit] = useState<boolean>(true);
   const [isClearModalOpen, setIsClearModalOpen] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<{ text: string; type: 'success' | 'error' } | null>(null);
+
+  // Auto recalculate on window resize when in auto-fit mode
+  useEffect(() => {
+    const handleResize = () => {
+      if (isAutoFit) {
+        setPreviewScale(calculateDefaultScale());
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [isAutoFit]);
+
+  // When switching to mobile preview tab, re-fit automatically
+  useEffect(() => {
+    if (mobileTab === 'preview' && typeof window !== 'undefined' && window.innerWidth < 640) {
+      setPreviewScale(calculateDefaultScale());
+      setIsAutoFit(true);
+    }
+  }, [mobileTab]);
 
   const showToast = (text: string, type: 'success' | 'error' = 'success') => {
     setToastMessage({ text, type });
@@ -142,7 +184,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 flex flex-col font-tajawal relative">
+    <div className="min-h-screen bg-slate-900 text-slate-100 flex flex-col font-tajawal relative w-full overflow-x-hidden">
       {/* Toast Notification Banner */}
       {toastMessage && (
         <div className="fixed top-5 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 px-4 py-2.5 rounded-xl shadow-2xl border text-xs font-bold transition-all animate-in slide-in-from-top-3 duration-300"
@@ -188,7 +230,7 @@ export default function App() {
       />
 
       {/* Main Content Split View */}
-      <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-2 py-3 sm:px-6 sm:py-6 lg:p-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Form Editor Column (Hidden on mobile if Preview tab is active) */}
@@ -204,27 +246,34 @@ export default function App() {
           {/* Live Preview Column (Hidden on mobile if Edit tab is active) */}
           <div className={`lg:col-span-7 ${mobileTab === 'edit' ? 'hidden lg:block' : 'block'} lg:sticky lg:top-24`}>
             {/* Preview Controls Bar */}
-            <div className="no-print bg-slate-800/90 border border-slate-700/80 p-3 rounded-xl mb-4 flex items-center justify-between shadow-md">
+            <div className="no-print bg-slate-800/90 border border-slate-700/80 p-2.5 sm:p-3 rounded-xl mb-3 sm:mb-4 flex items-center justify-between shadow-md">
               <div className="flex items-center gap-2 text-xs font-bold text-slate-300">
                 <Eye className="w-4 h-4 text-[#44E5E7]" />
-                <span>معاينة السيرة الذاتية المباشرة (A4)</span>
+                <span className="hidden sm:inline">معاينة السيرة الذاتية المباشرة (A4)</span>
+                <span className="sm:hidden">معاينة مباشرة</span>
               </div>
 
               {/* Zoom Scale Controls */}
-              <div className="flex items-center gap-2 text-xs text-slate-400 bg-slate-900 px-3 py-1 rounded-lg border border-slate-700">
+              <div className="flex items-center gap-1.5 sm:gap-2 text-xs text-slate-400 bg-slate-900 px-2 sm:px-3 py-1 rounded-lg border border-slate-700">
                 <button
-                  onClick={() => setPreviewScale((s) => Math.max(0.5, s - 0.05))}
+                  onClick={() => {
+                    setIsAutoFit(false);
+                    setPreviewScale((s) => Math.max(0.35, Number((s - 0.05).toFixed(2))));
+                  }}
                   type="button"
                   className="hover:text-white p-0.5"
                   title="تصغير المعاينة"
                 >
                   <ZoomOut className="w-3.5 h-3.5" />
                 </button>
-                <span className="font-bold text-slate-200 min-w-[40px] text-center">
+                <span className="font-bold text-slate-200 min-w-[38px] text-center text-[11px] sm:text-xs">
                   {Math.round(previewScale * 100)}%
                 </span>
                 <button
-                  onClick={() => setPreviewScale((s) => Math.min(1.2, s + 0.05))}
+                  onClick={() => {
+                    setIsAutoFit(false);
+                    setPreviewScale((s) => Math.min(1.2, Number((s + 0.05).toFixed(2))));
+                  }}
                   type="button"
                   className="hover:text-white p-0.5"
                   title="تكبير المعاينة"
@@ -232,18 +281,22 @@ export default function App() {
                   <ZoomIn className="w-3.5 h-3.5" />
                 </button>
                 <button
-                  onClick={() => setPreviewScale(0.85)}
+                  onClick={() => {
+                    setIsAutoFit(true);
+                    setPreviewScale(calculateDefaultScale());
+                  }}
                   type="button"
-                  className="hover:text-white p-0.5 border-r border-slate-700 pr-1.5 mr-1"
-                  title="إعادة تعيين الحجم"
+                  className="hover:text-white p-0.5 border-r border-slate-700 pr-1.5 mr-1 flex items-center gap-1 text-[10px] sm:text-[11px] font-semibold text-[#59D2FE]"
+                  title="إعادة ضبط الحجم ليناسب الشاشة"
                 >
                   <RefreshCw className="w-3 h-3" />
+                  <span className="hidden sm:inline">ملائمة</span>
                 </button>
               </div>
             </div>
 
             {/* Render Printable A4 Sheet */}
-            <div className="bg-slate-950/60 p-4 rounded-2xl border border-slate-800/80 shadow-2xl overflow-hidden min-h-[600px] flex justify-center items-start">
+            <div className="bg-slate-950/60 p-2 sm:p-4 rounded-xl sm:rounded-2xl border border-slate-800/80 shadow-2xl min-h-[500px] flex justify-center items-start w-full overflow-x-auto">
               <Preview
                 data={cvData}
                 template={template}
