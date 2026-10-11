@@ -309,9 +309,18 @@ export default function App() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="no-print border-t border-slate-800 bg-slate-950 py-4 text-center text-xs text-slate-500">
-        <p>سيرة فورية © {new Date().getFullYear()} - منشئ السير الذاتية الاحترافي باللغة العربية. جميع الحقوق محفوظة.</p>
+      {/* Footer with Brand Identity Signature */}
+      <footer className="no-print border-t border-slate-800 bg-slate-950/90 py-6 text-center text-xs text-slate-400">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#73FBD3] animate-pulse" />
+            <span className="font-bold text-slate-300">سيرة فورية — محرر السير الذاتية الاحترافي</span>
+            <span className="text-[11px] text-slate-500">| مصمم خصيصاً للكوادر والكفاءات المهنية</span>
+          </div>
+          <p className="text-slate-500 text-[11px]">
+            جميع البيانات محفوظة محلياً على جهازك 100% • تصدير بجودة عالية للطباعة والـ ATS
+          </p>
+        </div>
       </footer>
     </div>
   );

@@ -1,7 +1,8 @@
 import React from 'react';
 import { TemplateId, ThemeConfig, FontFamilyId } from '../types';
 import { PALETTES } from '../data/initialData';
-import { Download, Printer, FileCode, Upload, Sparkles, Layout, Palette, Type, Check } from 'lucide-react';
+import { Download, Printer, FileCode, Upload, Layout, Palette, Type, Check } from 'lucide-react';
+import { BrandLogo } from './BrandLogo';
 
 interface Props {
   template: TemplateId;
@@ -49,24 +50,16 @@ export const Header: React.FC<Props> = ({
       {/* Top Main Navigation Bar */}
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3.5 flex items-center justify-between gap-2 sm:gap-4">
         {/* Brand Logo & Name */}
-        <div className="flex items-center gap-2 sm:gap-3 shrink min-w-0">
-          <div 
-            className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center text-slate-900 font-black shadow-lg shrink-0"
-            style={{
-              background: `linear-gradient(135deg, #73FBD3 0%, #44E5E7 30%, #59D2FE 70%, #4A8FE7 100%)`
-            }}
-          >
-            <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-slate-900" />
-          </div>
+        <div className="flex items-center gap-2.5 sm:gap-3.5 shrink min-w-0">
+          <BrandLogo size="md" />
           <div className="min-w-0">
-            <h1 className="text-base sm:text-xl font-black text-slate-100 tracking-tight flex items-center gap-1.5 truncate">
-              سيرة فورية
-              <span className="text-[9px] sm:text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-[#44E5E7]/20 text-[#44E5E7] border border-[#44E5E7]/30 shrink-0">
-                مجاني 100%
-              </span>
-            </h1>
+            <div className="flex items-center gap-1.5 truncate">
+              <h1 className="text-base sm:text-xl font-black text-slate-100 tracking-tight">
+                سيرة فورية
+              </h1>
+            </div>
             <p className="text-[11px] text-slate-400 font-medium hidden sm:block">
-              صانع السيرة الذاتية الاحترافي باللغة العربية مع معاينة مباشرة وتصدير PDF
+              منصة صناعة السيرة الذاتية المهنية باللغة العربية مع معاينة فورية وتصدير PDF
             </p>
           </div>
         </div>

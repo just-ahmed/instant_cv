@@ -221,18 +221,21 @@ export const FormEditor: React.FC<Props> = ({ data, onChange, onLoadSample, onCl
   return (
     <div className="space-y-4">
       {/* Action Bar for Preset and Reset */}
-      <div className="bg-slate-800/90 p-3.5 rounded-xl border border-slate-700/80 flex flex-wrap items-center justify-between gap-3 shadow-md">
+      <div className="bg-slate-800/90 p-3 sm:p-3.5 rounded-xl border border-slate-700/80 flex flex-wrap items-center justify-between gap-3 shadow-md">
         <div className="flex items-center gap-2">
-          <Sparkles className="w-4 h-4 text-[#73FBD3]" />
+          <div className="w-2 h-2 rounded-full bg-[#73FBD3] animate-pulse" />
           <span className="text-xs font-bold text-slate-200">محرر بيانات السيرة الذاتية</span>
+          <span className="text-[10px] font-medium px-2 py-0.5 rounded-md bg-slate-900 text-[#44E5E7] border border-slate-700">
+            نموذج جاهز
+          </span>
         </div>
         <div className="flex items-center gap-2">
           <button
             onClick={onLoadSample}
             type="button"
-            className="px-3 py-1.5 rounded-lg text-xs font-bold bg-[#4A8FE7] hover:bg-[#3b7cd4] text-white transition-all shadow-sm active:scale-95"
+            className="px-3 py-1.5 rounded-lg text-xs font-bold bg-[#4A8FE7] hover:bg-[#3b7cd4] text-white transition-all shadow-sm active:scale-95 cursor-pointer"
           >
-            تحميل نموذج تجريبي
+            تحميل نموذج جاهز
           </button>
           <button
             onClick={onClear}
